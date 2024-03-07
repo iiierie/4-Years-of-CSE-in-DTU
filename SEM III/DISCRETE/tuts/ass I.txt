@@ -1,0 +1,13 @@
+Assignment-I
+
+Que. 1. Explain the following methods of Proving theorems with examples:
+A) Direct poof
+B) Proof by contra position
+C) Proof by Exhausting Cases &
+D) Proof by Contradiction.
+
+Que. 2 Explain Principle of mathematical Induction & Principle of complete induction with example.
+
+Que. 3 Define recursive with an example.
+
+One. 4 Explain Solution methods for linear and first order recurrence relations with constant coefficients.

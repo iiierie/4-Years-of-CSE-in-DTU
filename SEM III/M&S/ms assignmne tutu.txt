@@ -1,0 +1,13 @@
+Tutorial -3: RE-DO all the questions of the midsem question paper properly with proper answers.
+This tutorial will be thoroughly evaluated before your endsem exams to check if the students can find and write down proper answers now even or not. Or they copy paste and write the same irrelevant content now as well.
+
+Tutorial -4:
+1. In single-server queuing system, if λ= 20 and μ=  25, what is utilization factor?
+
+2. Customers enter the waiting line at a cafeteria on a first-come, first-served basis. The arrival rate follows a Poisson distribution, while service times follow an exponential distribution. If the average number of arrivals is six per minute and the average service rate of a single server is ten per minute, What is the average time a customer spends waiting in line for service?
+   
+3. Customers enter the waiting line at a cafeteria on a first-come, first-served basis. the arrival rate follows a Poisson distribution, while service times follow an exponential distribution. if the average number of arrivals is six per minute and the average service rate of a single server is ten per minute, what is the average number of customers in the system?
+4. Which system/model applies deductive reasoning of mathematical theory to solve a model? Support Your Answer.
+
+
+Tutorial 5- any two questions of binomial distribution and any 2 of poision distribution probability

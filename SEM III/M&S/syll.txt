@@ -1,0 +1,26 @@
+Some important topics in Modelling and Simulation as told by ma'am
+
+Unit 1
+* Types and classification of models
+* Modelling and Simulation Process with Diagrams
+* Different types of System
+
+Unit 2
+* Time Advance Mechanism
+    *Next Event time advance { Discrete Event Simulation (DES) model }
+    *Fixed increment time advance { Discrete Time Simulation (DTS) model }
+* Single-server queuing System
+* Queuing Systems Definitions
+* Single-server queuing Numerical
+
+* Unit 3 : The PPT made for project presentation
+
+* Unit 4
+* Confidence interval
+* Random variables
+* Linear Congruential Method of Random number generation
+    *Mixed generator
+    *Multiplicative generator
+* Chi-square Test
+* Null Hypothesis
+* Sample variation and Sample size
