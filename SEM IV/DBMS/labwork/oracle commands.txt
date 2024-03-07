@@ -1,0 +1,167 @@
+CREATE TABLE Patients(
+    PatientID NUMBER PRIMARY KEY,
+    PatientName VARCHAR2(50) NOT NULL,
+    Address VARCHAR2(50) NOT NULL,
+    PhoneNo VARCHAR2(50) NOT NULL
+);
+
+CREATE TABLE Doctor(
+    DoctorID NUMBER(10) PRIMARY KEY,
+    DoctorName VARCHAR2(50) NOT NULL,
+    PhoneNo VARCHAR2(50) UNIQUE,
+    EmailID VARCHAR2(50) UNIQUE);
+
+CREATE TABLE PrescriptionReport(
+    ReportID NUMBER(10) PRIMARY KEY,
+    ReportDescription VARCHAR2(255) DEFAULT 'General Checkup',
+    DoctorID NUMBER(10),
+    FOREIGN KEY(DoctorID) REFERENCES Doctor(DoctorID));
+
+CREATE TABLE Medicine(
+    MedicineID NUMBER(10) PRIMARY KEY,
+    MedicineName VARCHAR2(255) NOT NULL,
+    Price VARCHAR2(255) NOT NULL,
+    ReportID NUMBER(10),
+    FOREIGN KEY(ReportID) REFERENCES PrescriptionReport(ReportID)
+);
+
+CREATE TABLE Appointments(
+    AppointmentID NUMBER(10) PRIMARY KEY,
+    AppointmentDate DATE NOT NULL,
+    AppointmentTime VARCHAR2(30) NOT NULL,
+    PatientID NUMBER(10),
+    ReportID NUMBER(10),
+    FOREIGN KEY(PatientID) REFERENCES Patients(PatientID),
+    FOREIGN KEY(ReportID) REFERENCES PrescriptionReport(ReportID));
+
+
+CREATE TABLE Bills (
+    BillID NUMBER(10) PRIMARY KEY,
+    PatientID NUMBER(10) NOT NULL,
+    TotalCost NUMBER(10, 2) NOT NULL,
+    BillDate DATE NOT NULL,
+    DueDate DATE,
+    FOREIGN KEY (PatientID) REFERENCES Patients (PatientID)
+);
+
+
+------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------------------
+
+
+-- insert random patient data
+INSERT ALL
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (1, 'Liam Johnson', '123 Main St, Anytown', '123-456-7890')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (2, 'Ava Smith', '456 Oak Ave, Another Town', '555-555-1234')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (3, 'Noah Davis', '789 Pine Rd, Big City', '111-222-3333')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (4, 'Sophia Rodriguez', '321 Maple Dr, Smallville', '444-555-6666')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (5, 'William Brown', '987 Cherry Ln, Metropolis', '777-888-9999')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (6, 'Isabella Wilson', '654 Elm St, Gotham', '333-444-5555')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (7, 'James Lee', '246 5th Ave, Springfield', '888-999-0000')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (8, 'Olivia Perez', '135 Broadway, Capital City', '222-333-4444')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (9, 'Oliver Martin', '864 High St, Atlantis', '111-222-3333')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (10, 'Lalu Yadav', 'Bihar', '987-634-259')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (11, 'Rahul Sharma', 'Delhi', '767-473-5890')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (12, 'Aman Yadav', 'Delhi', '858-7848-789')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (13, 'Sameer Saxena', 'Mumbai', '838-146-7671')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (14, 'Akash Chopra', 'Goa', '734-932-1587')
+INTO Patients(PatientID, PatientName, Address, PhoneNo) VALUES (15, 'Emma Thompson', '579 Low St, Neverland', '555-444-3333')
+SELECT 1 FROM dual;
+
+
+
+
+
+
+
+
+
+
+
+INSERT ALL
+    INTO Doctor(DoctorID, DoctorName, PhoneNo, EmailID) VALUES(1, 'Dr. Jackson', '555-123-4567', 'jackson@hospital.com')
+    INTO Doctor(DoctorID, DoctorName, PhoneNo, EmailID) VALUES(2, 'Dr. Smith', '555-234-5678', 'smith@hospital.com')
+    INTO Doctor(DoctorID, DoctorName, PhoneNo, EmailID) VALUES(3, 'Dr. Patel', '555-345-6789', 'patel@hospital.com')
+    INTO Doctor(DoctorID, DoctorName, PhoneNo, EmailID) VALUES(4, 'Dr. Chen', '555-456-7890', 'chen@hospital.com')
+    INTO Doctor(DoctorID, DoctorName, PhoneNo, EmailID) VALUES(5, 'Dr. Kim', '555-567-8901', 'kim@hospital.com')
+SELECT * FROM dual;
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT ALL
+    INTO PrescriptionReport(ReportID, ReportDescription, DoctorID) VALUES(1, 'Leg Injury', 1)
+    INTO PrescriptionReport(ReportID, ReportDescription, DoctorID) VALUES(2, 'Heart Attack', 4)
+    INTO PrescriptionReport(ReportID, ReportDescription, DoctorID) VALUES(3, 'Broken Teeth', 5)
+    INTO PrescriptionReport(ReportID, ReportDescription, DoctorID) VALUES(4, 'Typhoid', 2)
+    INTO PrescriptionReport(ReportID, ReportDescription, DoctorID) VALUES(5, 'Fever and Commoncold', 3)
+    INTO PrescriptionReport(ReportID, ReportDescription, DoctorID) VALUES(6, 'Hand Injury', 1)
+SELECT * FROM dual;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT ALL
+    INTO Medicine(MedicineID, MedicineName, Price, ReportID) VALUES(1, 'Aspirin', 'Rs.200', 1)
+    INTO Medicine(MedicineID, MedicineName, Price, ReportID) VALUES(2, 'Vasoter', 'Rs.250', 2)
+    INTO Medicine(MedicineID, MedicineName, Price, ReportID) VALUES(3, 'Avandia', 'Rs.300', 2)
+    INTO Medicine(MedicineID, MedicineName, Price, ReportID) VALUES(4, 'OraGel', 'Rs.179', 3)
+    INTO Medicine(MedicineID, MedicineName, Price, ReportID) VALUES(5, 'Ceftriaxone', 'Rs.200', 4)
+    INTO Medicine(MedicineID, MedicineName, Price, ReportID) VALUES(6, 'Vivotif', 'Rs.250', 4)
+    INTO Medicine(MedicineID, MedicineName, Price, ReportID) VALUES(7, 'Paracetamol', 'Rs.60', 5)
+    INTO Medicine(MedicineID, MedicineName, Price, ReportID) VALUES(8, 'Moov', 'Rs.70', 6)
+SELECT * FROM dual;
+
+
+
+
+
+
+
+
+INSERT ALL
+INTO Appointments(AppointmentID, AppointmentDate, AppointmentTime, PatientID, ReportID) 
+VALUES(1, TO_DATE('2022-04-11', 'YYYY-MM-DD'), '10AM', 1, 1)
+INTO Appointments(AppointmentID, AppointmentDate, AppointmentTime, PatientID, ReportID) 
+VALUES(2, TO_DATE('2022-04-13', 'YYYY-MM-DD'), '10AM', 2, 2)
+INTO Appointments(AppointmentID, AppointmentDate, AppointmentTime, PatientID, ReportID) 
+VALUES(3, TO_DATE('2022-04-09', 'YYYY-MM-DD'), '10AM', 3, 3)
+INTO Appointments(AppointmentID, AppointmentDate, AppointmentTime, PatientID, ReportID) 
+VALUES(4, TO_DATE('2022-04-08', 'YYYY-MM-DD'), '10AM', 4, 4)
+INTO Appointments(AppointmentID, AppointmentDate, AppointmentTime, PatientID, ReportID) 
+VALUES(5, TO_DATE('2022-04-13', 'YYYY-MM-DD'), '10AM', 5, 5)
+INTO Appointments(AppointmentID, AppointmentDate, AppointmentTime, PatientID, ReportID) 
+VALUES(6, TO_DATE('2022-04-20', 'YYYY-MM-DD'), '10AM', 1, 6)
+SELECT 1 FROM dual;
+
+
+
+INSERT ALL
+INTO Bills (BillID, PatientID, TotalCost, BillDate, DueDate) VALUES (1, 2, 100.00, TO_DATE('2023-03-01', 'YYYY-MM-DD'), TO_DATE('2023-03-31', 'YYYY-MM-DD'))
+INTO Bills (BillID, PatientID, TotalCost, BillDate, DueDate) VALUES (2, 3, 250.00, TO_DATE('2023-03-01', 'YYYY-MM-DD'), TO_DATE('2023-03-31', 'YYYY-MM-DD'))
+INTO Bills (BillID, PatientID, TotalCost, BillDate, DueDate) VALUES (3, 4, 75.50, TO_DATE('2023-03-01', 'YYYY-MM-DD'), TO_DATE('2023-03-31', 'YYYY-MM-DD'))
+INTO Bills (BillID, PatientID, TotalCost, BillDate, DueDate) VALUES (4, 5, 500.00, TO_DATE('2023-03-01', 'YYYY-MM-DD'), TO_DATE('2023-03-31', 'YYYY-MM-DD'))
+INTO Bills (BillID, PatientID, TotalCost, BillDate, DueDate) VALUES (5, 1, 1000.00, TO_DATE('2023-03-01', 'YYYY-MM-DD'), TO_DATE('2023-03-31', 'YYYY-MM-DD'))
+INTO Bills (BillID, PatientID, TotalCost, BillDate, DueDate) VALUES (6, 6, 200.00, TO_DATE('2023-03-01', 'YYYY-MM-DD'), TO_DATE('2023-03-31', 'YYYY-MM-DD'))
+SELECT * FROM dual;
+
